@@ -4,7 +4,7 @@ Created on Fri May  4 12:11:55 2018
 
 @author: Lixing Chen
 """
-import data
+#import data
 import pickle
 import get_context_space
 import counter_quality as cq
@@ -115,7 +115,7 @@ oracle_quality_est = np.nan_to_num(quality/counters)
 B = 10
 T = 200
 t = 0
-D=2
+D= 2
 alpha = 1
 par=2*alpha/(3*alpha+D)/3
 
@@ -206,7 +206,6 @@ while (t < T):
     selected_review_nonsub = selected_review_nonsub.append(selected_review_explore)
     
     
-    
     ##LinUCB
     for idx, x in user_context_cur.iterrows():
         x_temp = np.array([[user_context_cur.ix[idx,'elite']],[user_context_cur.ix[idx,'fans']]])
@@ -267,8 +266,12 @@ while (t < T):
     quality = quality + quality_cur
     p_est_quality = quality/counters   
     p_est_quality[np.isnan(p_est_quality)] = 0 
+    
+    print('Time slot', t, 'finished!')
+    
     t = t + 1
-    arrived_arm_num = arrived_arm_num + 100    
+    arrived_arm_num = arrived_arm_num + 100  
+    
 '''       
         for idx, x in selected_review_exploit.iterrows():
             user_id = x['user_id'] 
